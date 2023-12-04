@@ -1,3 +1,7 @@
+Up and running on:
+
+`https://app.netlify.com/sites/glittery-cheesecake-2057c4/configuration/deploys`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
