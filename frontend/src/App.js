@@ -1,18 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import AddScreen from './screens/AddScreen';
-import Home from './components/Home';
+// import Home from './components/Header';
 import Items from './components/Items';
+import Header from './components/Header';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/items" element={<Items />} />
-        <Route path="/add" element={<AddScreen />} />
-      </Routes>
-    </Router>
+    <>
+    <Header />
+      <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
+
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/items" element={<Items />} />
+          <Route path="/add" element={<AddScreen />} />
+        </Routes>
+    </>
+    
   );
 };
 

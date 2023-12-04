@@ -1,15 +1,12 @@
 import {Table, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import AddScreen from '../screens/AddScreen';
-import { Link } from 'react-router-dom';
-import {FaHome} from 'react-icons/fa';
+import '../App.css'
 
 const ItemTable = ( {item} ) => {
     return(
         <>
-        <Link to="/"><FaHome /> </Link>
-        <Table striped bordered hover variant="dark" className='mx-5 my-4'>
+        <Table striped bordered hover variant="dark" className='table-style'>
             <thead>
                 <tr>
                 <th>Username</th>
@@ -41,16 +38,6 @@ const ItemTable = ( {item} ) => {
                 }         
             </tbody>
         </Table>
-
-        <Link to="/add">
-        <Button
-                    variant='primary'
-                    className='ms-5'
-                    onClick={() => <AddScreen />}
-        >
-                    Add item
-        </Button>
-        </Link>
         </>
     );
 };
