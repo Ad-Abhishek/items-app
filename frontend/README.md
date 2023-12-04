@@ -1,6 +1,6 @@
-Up and running on:
+Up and running on Netlify:
 
-`https://app.netlify.com/sites/glittery-cheesecake-2057c4/configuration/deploys`
+https://glittery-cheesecake-2057c4.netlify.app/
 
 # Getting Started with Create React App
 
