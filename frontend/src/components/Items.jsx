@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import ItemTable from './ItemTable';
+import ItemService from '../services/ItemService';
+import { toast } from 'react-hot-toast';
+import Spinner from '../components/Spinner';
 
 const Items = () =>  {
-    const serverUrl = "http://localhost:4000/items";
 
     const [ item, setItem ] = useState([]);
 
     useEffect(() => {
-        axios
-            .get(serverUrl)
+        ItemService.getAllItems()
             .then((res) => {
-                // console.log(res)
                 setItem(() => {
                     return res.data;
                 });
             })
             .catch((err) => {
-                console.log(err)
-            }) 
-    }, [serverUrl])
+                toast.error(err)
+            })
+    }, [])
 
     return (
         <>
-            <ItemTable item={item} />
+            {
+                item.length === 0 && <Spinner /> 
+            }
+            {
+                item && <ItemTable item={item} />
+            }
         </>
     )
 };

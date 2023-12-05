@@ -1,8 +1,8 @@
 import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios';
 import {toast} from 'react-hot-toast';
+import ItemService from '../services/ItemService';
 
 const AddScreen = () => {
   const navigate = useNavigate();
@@ -18,30 +18,21 @@ const AddScreen = () => {
     e.preventDefault();
     const { username, name, price, quantity } = data;
 
-    try {
-        const { data } = await axios.post('http://localhost:4000/items/', {
-            username,
-            name,
-            price,
-            quantity
+    const item = {
+        username,
+        name,
+        price,
+        quantity
+    }
+    ItemService.addItem( item )
+        .then((res) => {
+            setData({})
+                toast.success('Item Added!')
+                navigate('/items')
         })
-    if (data.error) {
-        toast.error("error!")
-    } else {
-        setData({});
-        toast.success('add successfull')
-        navigate('/items')
-    }
-    } catch (error) {
-        const { username, name } = error.response.data
-        if (username) {
-            toast.error(username)
-        } else if(name) {
-            toast.error(name)
-        } else {
-            toast.error('error')
-        }
-    }
+        .catch((error) => {
+            toast.error(error)
+        })
   }
     return (
         <Container>

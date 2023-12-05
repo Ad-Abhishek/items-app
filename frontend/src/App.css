@@ -12,3 +12,11 @@
 .link:hover {
   color: rgb(17, 113, 151);
 }
+
+.spinner {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+}
+

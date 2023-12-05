@@ -5,6 +5,7 @@ import AddScreen from './screens/AddScreen';
 // import Home from './components/Header';
 import Items from './components/Items';
 import Header from './components/Header';
+import "./App.css"
 
 const App = () => {
   return (

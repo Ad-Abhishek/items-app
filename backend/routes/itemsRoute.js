@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Items = require('../models/ItemModel');
 
+// SIMULATE RESPONSE DELAY
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
 /**
  * @usage Get all items
  * @url : http://localhost:4000/items/
@@ -11,6 +14,7 @@ const Items = require('../models/ItemModel');
 router.get('/', async (req, res) => {
   try {
     const items = await Items.find();
+    await delay(1000)
     res.json(items);
   } catch (error) {
     res.status(500).json({
