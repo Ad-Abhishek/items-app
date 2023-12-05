@@ -2,18 +2,32 @@ import {Table, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import '../App.css'
+import ItemService from '../services/ItemService';
+import { toast } from 'react-hot-toast';
 
 const ItemTable = ( {item} ) => {
+
+    const handleDelete = ( _id ) => {
+        ItemService.deleteItem( _id )
+            .then(() => {
+                toast.success('Item Deleted!')
+                    window.location.replace('/items');
+            })
+            .catch((err) => {
+                toast.error(err)
+            })
+    }
+
     return(
         <>
         <Table striped bordered hover variant="dark" className='table-style'>
             <thead>
                 <tr>
-                <th>Username</th>
-                <th>Item name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Actions</th>
+                    <th>Username</th>
+                    <th>Item name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +43,7 @@ const ItemTable = ( {item} ) => {
                                     <FaEdit />
                                 </Button>
                                 {' '}
-                                <Button variant="danger" size="sm" >
+                                <Button variant="danger" size="sm" onClick={() => handleDelete(ite._id)}>
                                     <FaTrash />
                                 </Button>
                             </td>
