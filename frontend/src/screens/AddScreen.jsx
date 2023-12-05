@@ -45,6 +45,7 @@ const AddScreen = () => {
                         type='text'
                         placeholder='Enter username'
                         value={data.username}
+                        required
                         onChange={(e) => setData({...data, username : e.target.value})}
                     ></Form.Control>    
                 </Form.Group>
@@ -55,6 +56,7 @@ const AddScreen = () => {
                         type='text'
                         placeholder='Enter item name'
                         value={data.name}
+                        required
                         onChange={(e) => setData({...data, name : e.target.value})}
                     ></Form.Control>    
                 </Form.Group>
@@ -65,6 +67,7 @@ const AddScreen = () => {
                         type='number'
                         placeholder='Enter price'
                         value={data.price}
+                        required
                         onChange={(e) => setData({...data, price : e.target.value})}
                     ></Form.Control>    
                 </Form.Group>
@@ -75,6 +78,7 @@ const AddScreen = () => {
                         type='text'
                         placeholder='Enter quantity'
                         value={data.quantity}
+                        required
                         onChange={(e) => setData({...data, quantity : e.target.value})}
                     ></Form.Control>    
                 </Form.Group>
