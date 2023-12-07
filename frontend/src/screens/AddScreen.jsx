@@ -35,10 +35,10 @@ const AddScreen = () => {
         })
   }
     return (
-        <Container>
+        <Container className='form-container'>
             <h1>Add Item</h1>
            
-            <Form onSubmit={addItem}>
+            <Form onSubmit={addItem} >
                 <Form.Group controlId='username' className='my-3'>
                     <Form.Label>Username</Form.Label>
                     <Form.Control

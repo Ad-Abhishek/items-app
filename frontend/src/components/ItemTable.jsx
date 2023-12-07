@@ -33,6 +33,7 @@ const ItemTable = ( {item} ) => {
                     <th>Item name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Total($)</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@ const ItemTable = ( {item} ) => {
                             <td>{ite.name}</td>
                             <td>{ite.price}</td>
                             <td>{ite.quantity}</td>
+                            <td>{ite.price * ite.quantity}</td>
                             <td>
                                 <Button variant="info" size="sm" onClick={() => handleUpdate(ite._id)}>                                  
                                     <FaEdit />

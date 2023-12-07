@@ -6,6 +6,7 @@ import Items from './components/Items';
 import Header from './components/Header';
 import "./App.css"
 import UpdateScreen from './screens/UpdateScreen';
+import Home from './components/Home';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
 
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path="/items" element={<Items />} />
           <Route path="/add" element={<AddScreen />} />
           <Route path="/update/:id" element={<UpdateScreen />} />

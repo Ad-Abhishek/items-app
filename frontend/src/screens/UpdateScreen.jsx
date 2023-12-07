@@ -3,12 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
 import { toast } from 'react-hot-toast';
 import ItemService from '../services/ItemService';
-import axios from 'axios';
-
 
 const UpdateScreen = ( ) => {
 
-    let itemId  = useParams();
+    let { id: itemId }   = useParams();
 
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -18,31 +16,24 @@ const UpdateScreen = ( ) => {
         quantity: ""
     });
 
-//    const url = `http://localhost:4000/items/${itemId}`
-const url = 'http://localhost:4000/items/656db1f55160d97ef8403c0f'
-
     useEffect(() => {
-        // ItemService.getItemById(itemId)
-        axios
-            .get(url)
+        ItemService.getItemById(itemId)
         .   then((res) => {
                 setData(() => {
-                    console.log(res.data)
-                return res.data;
+                    return res.data;
                 });
             }) 
             .catch((err) => {
                 console.log(err);
             }); 
-    }, [url]);
+    }, []);
 
     const updateItem = async (e) => {
         e.preventDefault();
         const { username, name, price, quantity } = data;
 
         try {
-            // const { data } = await ItemService.updateItem(id , {
-            const { data } = await axios.put(url, {
+            const { data } = await ItemService.updateItem(itemId , {
                 username,
                 name,
                 price,
@@ -60,8 +51,7 @@ const url = 'http://localhost:4000/items/656db1f55160d97ef8403c0f'
 }
 
   return (
-    <Container>
-    
+    <Container className='form-container'>
       <Form onSubmit={updateItem}>
                 <Form.Group controlId='username' className='my-3'>
                     <Form.Label>Username</Form.Label>

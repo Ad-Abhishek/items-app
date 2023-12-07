@@ -20,3 +20,18 @@
   display: flex;
 }
 
+.landing-page {
+  background: white url('./assets/products.jpg') no-repeat scroll center;
+  background-size: cover;
+  height: 100vh;
+  color: antiquewhite;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+}
+
+.form-container {
+  width: 500px;
+}
