@@ -26,7 +26,7 @@ const UpdateScreen = ( ) => {
             .catch((err) => {
                 console.log(err);
             }); 
-    }, []);
+    }, [itemId]);
 
     const updateItem = async (e) => {
         e.preventDefault();

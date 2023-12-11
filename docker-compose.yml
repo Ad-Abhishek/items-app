@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  backend:
+    container_name: items-api
+    image: items-api-img
+    build: ./backend
+    ports:
+      - '4000:4000'
+    environment:
+      - DB_URL=mongodb://mongo:27017/itemsDb
+    depends_on:
+      - mongo
+
+  frontend:
+    container_name: items-ui
+    image: items-ui-img
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:4000
+    depends_on:
+      - backend
+
+  mongo:
+    container_name: mongo-database
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_DATABASE=itemsDb
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
