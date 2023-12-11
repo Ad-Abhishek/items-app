@@ -1,0 +1,4 @@
+db.items.find()
+show collections
+use itemsDb
+show dbs
